@@ -1,0 +1,28 @@
+package hello.core;
+
+import hello.core.member.Grade;
+import hello.core.member.Member;
+import hello.core.member.MemberService;
+import hello.core.member.MemberServiceImpl;
+
+public class MemberApp {
+
+    public static void main(String[] args) {
+
+        AppConfig appConfig = new AppConfig();
+        MemberService memberService = appConfig.memberService();
+
+        //MemberService memberService = new MemberServiceImpl();
+
+        Member member = new Member(1L, "MemberA", Grade.VIP);
+        //ctrl + alt + v -> 객체에서 변수 추출
+
+        memberService.join(member);
+
+        Member findMember = memberService.findMember(1L);
+
+        System.out.println("new Member = " + member.getName());
+        System.out.println("Find Member = " + findMember.getName());
+
+    }
+}
